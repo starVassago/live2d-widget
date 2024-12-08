@@ -1,70 +1,76 @@
+/* 修改 waifu-toggle，按钮也需要在右下角 */
 #waifu-toggle {
-	background-color: #fa0;
-	border-radius: 5px;
-	bottom: 66px;
-	color: #fff;
-	cursor: pointer;
-	font-size: 12px;
-	right: 0px;  /* 距离页面右边10px */
-	margin-left: -100px;
-	padding: 5px 2px 5px 5px;
-	position: fixed;
-	transition: margin-left 1s;
-	width: 60px;
-	writing-mode: vertical-rl;
+    background-color: #fa0;
+    border-radius: 5px;
+    bottom: 66px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 12px;
+    right: 0;  /* 右侧对齐 */
+    margin-right: -100px; /* 微调，确保不会超出屏幕 */
+    padding: 5px 2px 5px 5px;
+    position: fixed;
+    transition: margin-right 1s;
+    width: 60px;
+    writing-mode: vertical-rl;
 }
 
+/* waifu-toggle 的活动状态，按钮平滑过渡 */
 #waifu-toggle.waifu-toggle-active {
-	margin-left: -50px;
+    margin-right: -50px; /* 调整按钮弹出的效果 */
 }
 
 #waifu-toggle.waifu-toggle-active:hover {
-	margin-left: -30px;
+    margin-right: -30px; /* 鼠标悬停时按钮进一步弹出 */
 }
 
+/* 将 waifu 元素及其工具、提示等整体移动到右下角 */
 #waifu {
-	bottom: 10px;
-	right: 0px;  /* 距离页面右边10px */
-	line-height: 0;
-	margin-bottom: -10px;
-	position: fixed;
-	transform: translateY(3px);
-	transition: transform .3s ease-in-out, bottom 3s ease-in-out;
-	z-index: 1;
+    bottom: 10px; /* 距离底部10px */
+    right: 10px;  /* 距离右侧10px */
+    line-height: 0;
+    margin-bottom: -10px;
+    position: fixed;
+    transform: translateY(3px);
+    transition: transform .3s ease-in-out, bottom 3s ease-in-out;
+    z-index: 1;
 }
 
 #waifu:hover {
-	transform: translateY(0);
+    transform: translateY(0);
 }
-
+/* waifu-tips 提示框的位置调整 */
 #waifu-tips {
-	animation: shake 50s ease-in-out 5s infinite;
-	background-color: rgba(236, 217, 188, .5);
-	border: 1px solid rgba(224, 186, 140, .62);
-	border-radius: 12px;
-	box-shadow: 0 3px 15px 2px rgba(191, 158, 118, .2);
-	font-size: 14px;
-	line-height: 24px;
-	margin: -30px 20px;
-	min-height: 70px;
-	opacity: 0;
-	overflow: hidden;
-	padding: 5px 10px;
-	position: absolute;
-	text-overflow: ellipsis;
-	transition: opacity 1s;
-	width: 250px;
-	word-break: break-all;
+    animation: shake 50s ease-in-out 5s infinite;
+    background-color: rgba(236, 217, 188, .5);
+    border: 1px solid rgba(224, 186, 140, .62);
+    border-radius: 12px;
+    box-shadow: 0 3px 15px 2px rgba(191, 158, 118, .2);
+    font-size: 14px;
+    line-height: 24px;
+    margin: -30px 20px;
+    min-height: 70px;
+    opacity: 0;
+    overflow: hidden;
+    padding: 5px 10px;
+    position: absolute;
+    text-overflow: ellipsis;
+    transition: opacity 1s;
+    width: 250px;
+    word-break: break-all;
+    right: 10px; /* 使提示框对齐到右边 */
 }
 
 #waifu-tips.waifu-tips-active {
-	opacity: 1;
-	transition: opacity .2s;
+    opacity: 1;
+    transition: opacity .2s;
 }
 
 #waifu-tips span {
-	color: #0099cc;
+    color: #0099cc;
 }
+
+
 
 #live2d {
 	cursor: grab;
@@ -77,36 +83,38 @@
 	cursor: grabbing;
 }
 
+/* waifu-tool 工具栏的位置调整 */
 #waifu-tool {
-	color: #aaa;
-	opacity: 0;
-	position: absolute;
-	right: -10px;
-	top: 70px;
-	transition: opacity 1s;
+    color: #aaa;
+    opacity: 0;
+    position: absolute;
+    right: -10px;
+    top: 70px;
+    transition: opacity 1s;
 }
 
+/* 当 waifu 被悬停时，显示工具栏 */
 #waifu:hover #waifu-tool {
-	opacity: 1;
+    opacity: 1;
 }
 
 #waifu-tool span {
-	display: block;
-	height: 30px;
-	text-align: center;
+    display: block;
+    height: 30px;
+    text-align: center;
 }
 
 #waifu-tool svg {
-	fill: #7b8c9d;
-	cursor: pointer;
-	height: 25px;
-	transition: fill .3s;
+    fill: #7b8c9d;
+    cursor: pointer;
+    height: 25px;
+    transition: fill .3s;
 }
 
+/* 鼠标悬停时工具栏图标的颜色变化 */
 #waifu-tool svg:hover {
-	fill: #0684bd; /* #34495e */
+    fill: #0684bd; /* #34495e */
 }
-
 @keyframes shake {
 	2% {
 		transform: translate(.5px, -1.5px) rotate(-.5deg);
