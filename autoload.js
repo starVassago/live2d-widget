@@ -1,4 +1,4 @@
-// live2d_path 参数建议使用绝对路
+// live2d_path 参数建议使用绝对
 const live2d_path = "https://fastly.jsdelivr.net/gh/starVassago/live2d-widget@main/";
 //const live2d_path = "/live2d-widget/";
 //<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/starVassago/live2d-widget@main/waifu.css">
