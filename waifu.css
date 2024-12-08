@@ -1,43 +1,45 @@
-/* 将 #waifu 元素移到右下角 */
-#waifu {
-    bottom: 10px;   /* 距离页面底部10px */
-    right: 10px;    /* 距离页面右边10px */
-    position: fixed; /* 固定位置 */
-    z-index: 9999;   /* 确保 waifu 显示在所有元素的上层 */
-    transform: translateY(3px);  /* 微调，防止出现不必要的偏移 */
-    transition: transform .3s ease-in-out, bottom 3s ease-in-out;
-}
-
-#waifu:hover {
-    transform: translateY(0); /* 鼠标悬停时让元素微调 */
-}
-
-/* 将 waifu-toggle 按钮固定在右下角 */
+/* 修改 waifu-toggle，按钮也需要在右下角 */
 #waifu-toggle {
     background-color: #fa0;
     border-radius: 5px;
-    bottom: 66px;        /* 距离页面底部66px */
-    right: 0;            /* 距离页面右边0px */
+    bottom: 66px;
     color: #fff;
     cursor: pointer;
     font-size: 12px;
+    right: 0;  /* 右侧对齐 */
+    margin-right: -100px; /* 微调，确保不会超出屏幕 */
     padding: 5px 2px 5px 5px;
-    position: fixed;     /* 固定位置 */
+    position: fixed;
+    transition: margin-right 1s;
     width: 60px;
     writing-mode: vertical-rl;
-    transition: margin-right 1s;
 }
 
-/* 按钮的活动状态调整 */
+/* waifu-toggle 的活动状态，按钮平滑过渡 */
 #waifu-toggle.waifu-toggle-active {
-    margin-right: -50px; /* 使按钮更突出 */
+    margin-right: -50px; /* 调整按钮弹出的效果 */
 }
 
 #waifu-toggle.waifu-toggle-active:hover {
-    margin-right: -30px; /* 鼠标悬停时进一步弹出 */
+    margin-right: -30px; /* 鼠标悬停时按钮进一步弹出 */
 }
 
-/* waifu-tips 提示框显示位置调整 */
+/* 将 waifu 元素及其工具、提示等整体移动到右下角 */
+#waifu {
+    bottom: 10px; /* 距离底部10px */
+    right: 10px;  /* 距离右侧10px */
+    line-height: 0;
+    margin-bottom: -10px;
+    position: fixed;
+    transform: translateY(3px);
+    transition: transform .3s ease-in-out, bottom 3s ease-in-out;
+    z-index: 1;
+}
+
+#waifu:hover {
+    transform: translateY(0);
+}
+/* waifu-tips 提示框的位置调整 */
 #waifu-tips {
     animation: shake 50s ease-in-out 5s infinite;
     background-color: rgba(236, 217, 188, .5);
@@ -56,7 +58,7 @@
     transition: opacity 1s;
     width: 250px;
     word-break: break-all;
-    right: 0;    /* 向右对齐 */
+    right: 10px; /* 使提示框对齐到右边 */
 }
 
 #waifu-tips.waifu-tips-active {
@@ -68,7 +70,20 @@
     color: #0099cc;
 }
 
-/* 工具栏在右侧显示 */
+
+
+#live2d {
+	cursor: grab;
+	height: 300px;
+	position: relative;
+	width: 300px;
+}
+
+#live2d:active {
+	cursor: grabbing;
+}
+
+/* waifu-tool 工具栏的位置调整 */
 #waifu-tool {
     color: #aaa;
     opacity: 0;
@@ -78,6 +93,7 @@
     transition: opacity 1s;
 }
 
+/* 当 waifu 被悬停时，显示工具栏 */
 #waifu:hover #waifu-tool {
     opacity: 1;
 }
@@ -95,7 +111,208 @@
     transition: fill .3s;
 }
 
-/* 悬停时改变工具栏图标的颜色 */
+/* 鼠标悬停时工具栏图标的颜色变化 */
 #waifu-tool svg:hover {
-    fill: #0684bd;
+    fill: #0684bd; /* #34495e */
+}
+@keyframes shake {
+	2% {
+		transform: translate(.5px, -1.5px) rotate(-.5deg);
+	}
+
+	4% {
+		transform: translate(.5px, 1.5px) rotate(1.5deg);
+	}
+
+	6% {
+		transform: translate(1.5px, 1.5px) rotate(1.5deg);
+	}
+
+	8% {
+		transform: translate(2.5px, 1.5px) rotate(.5deg);
+	}
+
+	10% {
+		transform: translate(.5px, 2.5px) rotate(.5deg);
+	}
+
+	12% {
+		transform: translate(1.5px, 1.5px) rotate(.5deg);
+	}
+
+	14% {
+		transform: translate(.5px, .5px) rotate(.5deg);
+	}
+
+	16% {
+		transform: translate(-1.5px, -.5px) rotate(1.5deg);
+	}
+
+	18% {
+		transform: translate(.5px, .5px) rotate(1.5deg);
+	}
+
+	20% {
+		transform: translate(2.5px, 2.5px) rotate(1.5deg);
+	}
+
+	22% {
+		transform: translate(.5px, -1.5px) rotate(1.5deg);
+	}
+
+	24% {
+		transform: translate(-1.5px, 1.5px) rotate(-.5deg);
+	}
+
+	26% {
+		transform: translate(1.5px, .5px) rotate(1.5deg);
+	}
+
+	28% {
+		transform: translate(-.5px, -.5px) rotate(-.5deg);
+	}
+
+	30% {
+		transform: translate(1.5px, -.5px) rotate(-.5deg);
+	}
+
+	32% {
+		transform: translate(2.5px, -1.5px) rotate(1.5deg);
+	}
+
+	34% {
+		transform: translate(2.5px, 2.5px) rotate(-.5deg);
+	}
+
+	36% {
+		transform: translate(.5px, -1.5px) rotate(.5deg);
+	}
+
+	38% {
+		transform: translate(2.5px, -.5px) rotate(-.5deg);
+	}
+
+	40% {
+		transform: translate(-.5px, 2.5px) rotate(.5deg);
+	}
+
+	42% {
+		transform: translate(-1.5px, 2.5px) rotate(.5deg);
+	}
+
+	44% {
+		transform: translate(-1.5px, 1.5px) rotate(.5deg);
+	}
+
+	46% {
+		transform: translate(1.5px, -.5px) rotate(-.5deg);
+	}
+
+	48% {
+		transform: translate(2.5px, -.5px) rotate(.5deg);
+	}
+
+	50% {
+		transform: translate(-1.5px, 1.5px) rotate(.5deg);
+	}
+
+	52% {
+		transform: translate(-.5px, 1.5px) rotate(.5deg);
+	}
+
+	54% {
+		transform: translate(-1.5px, 1.5px) rotate(.5deg);
+	}
+
+	56% {
+		transform: translate(.5px, 2.5px) rotate(1.5deg);
+	}
+
+	58% {
+		transform: translate(2.5px, 2.5px) rotate(.5deg);
+	}
+
+	60% {
+		transform: translate(2.5px, -1.5px) rotate(1.5deg);
+	}
+
+	62% {
+		transform: translate(-1.5px, .5px) rotate(1.5deg);
+	}
+
+	64% {
+		transform: translate(-1.5px, 1.5px) rotate(1.5deg);
+	}
+
+	66% {
+		transform: translate(.5px, 2.5px) rotate(1.5deg);
+	}
+
+	68% {
+		transform: translate(2.5px, -1.5px) rotate(1.5deg);
+	}
+
+	70% {
+		transform: translate(2.5px, 2.5px) rotate(.5deg);
+	}
+
+	72% {
+		transform: translate(-.5px, -1.5px) rotate(1.5deg);
+	}
+
+	74% {
+		transform: translate(-1.5px, 2.5px) rotate(1.5deg);
+	}
+
+	76% {
+		transform: translate(-1.5px, 2.5px) rotate(1.5deg);
+	}
+
+	78% {
+		transform: translate(-1.5px, 2.5px) rotate(.5deg);
+	}
+
+	80% {
+		transform: translate(-1.5px, .5px) rotate(-.5deg);
+	}
+
+	82% {
+		transform: translate(-1.5px, .5px) rotate(-.5deg);
+	}
+
+	84% {
+		transform: translate(-.5px, .5px) rotate(1.5deg);
+	}
+
+	86% {
+		transform: translate(2.5px, 1.5px) rotate(.5deg);
+	}
+
+	88% {
+		transform: translate(-1.5px, .5px) rotate(1.5deg);
+	}
+
+	90% {
+		transform: translate(-1.5px, -.5px) rotate(-.5deg);
+	}
+
+	92% {
+		transform: translate(-1.5px, -1.5px) rotate(1.5deg);
+	}
+
+	94% {
+		transform: translate(.5px, .5px) rotate(-.5deg);
+	}
+
+	96% {
+		transform: translate(2.5px, -.5px) rotate(-.5deg);
+	}
+
+	98% {
+		transform: translate(-1.5px, -1.5px) rotate(-.5deg);
+	}
+
+	0%, 100% {
+		transform: translate(0, 0) rotate(0);
+	}
 }
